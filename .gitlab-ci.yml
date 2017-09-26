@@ -1,0 +1,31 @@
+stages:
+  - test
+
+unit-test:
+  stage: test
+  script:
+    - cp .env.example .env
+
+    # install dependencies
+    - php composer.phar install
+
+    # install and load xdebug
+    - apt-get install php7.1-xdebug -y
+    - sed -i 's/;zend_extension/zend_extension/g' /etc/php/7.1/cli/conf.d/20-xdebug.ini
+
+    - php vendor/bin/phpunit --colors --testdox-html public/tests/report.html --coverage-html public/tests/code-coverage
+
+    # unload xdebug
+    - sed -i 's/zend_extension/;zend_extension/g' /etc/php/7.1/cli/conf.d/20-xdebug.ini
+
+  cache:
+    paths:
+    - vendor/
+    - storage/
+    - public/
+    - node_modules/
+  artifacts:
+    paths:
+      - public/tests
+      - tests/Browser/screenshots
+      - tests/Browser/console
