@@ -4,18 +4,12 @@ namespace App\Workshop\SOLID;
 
 class Order {
 
-    /** @string */
     public $id;
 
-    /** @double */
     public $price;
 
-    /** @string */
     public $category;
 
-    /**
-     * @return mixed
-     */
     public function getId() {
         return $this->id;
     }
