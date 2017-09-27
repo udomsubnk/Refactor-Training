@@ -8,6 +8,7 @@ abstract class AccountBase {
 
     private $rewardPoints;
 
+    /* Method refactoring*/
     public static function createAccount(string $type) {
         switch ($type) {
             case AccountType::Silver:
