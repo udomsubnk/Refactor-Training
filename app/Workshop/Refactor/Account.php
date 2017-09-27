@@ -28,7 +28,7 @@ class Account {
         $this->balance += $amount;
     }
 
-    public function calculateRewardPoints(double $amount): int {
+    public function calculateRewardPoints(float $amount): int {
         $points = null;
         switch ($this->type) {
             case AccountType::Silver:
