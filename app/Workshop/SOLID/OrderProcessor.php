@@ -22,7 +22,7 @@ class OrderProcessor {
         //Write DB
         //..... etc.
 
-        //throw new Exception("error");
+        throw new Exception("error");
     }
 
 }
