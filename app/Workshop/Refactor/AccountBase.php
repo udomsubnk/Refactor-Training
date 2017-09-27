@@ -10,14 +10,8 @@ abstract class AccountBase {
 
     /* Method refactoring*/
     public static function createAccount(string $type) {
-        switch ($type) {
-            case AccountType::Silver:
-                return new SilverAccount();
-            case AccountType::Gold:
-                return new GoldAccount();
-            case AccountType::Platinum:
-                return new PlatinumAccount();
-        }
+        $fact = new AccountFactory();
+        return $fact->createAccount($type);
     }
 
     public function getBalance(): float {
