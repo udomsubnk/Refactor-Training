@@ -8,6 +8,17 @@ abstract class AccountBase {
 
     private $rewardPoints;
 
+    public static function createAccount(string $type) {
+        switch ($type) {
+            case AccountType::Silver:
+                return new SilverAccount();
+            case AccountType::Gold:
+                return new GoldAccount();
+            case AccountType::Platinum:
+                return new PlatinumAccount();
+        }
+    }
+
     public function getBalance(): float {
         return $this->balance;
     }
